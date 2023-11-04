@@ -83,7 +83,7 @@ namespace PierresTreats.Controllers
     public ActionResult AddTag(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
-      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Title");
       return View(thisTreat);
     }
 

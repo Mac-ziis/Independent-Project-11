@@ -88,7 +88,7 @@ namespace PierresTreats.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
-      _db.Flavors.Remove(thisFalvor);
+      _db.Flavors.Remove(thisFlavor);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

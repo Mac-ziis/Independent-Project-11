@@ -14,15 +14,15 @@ namespace PierresTreats.Controllers
       _db = db;
     }
 
-    // [HttpGet("/")]
-    // public ActionResult Index()
-    // {
-    //   Tag[] tags = _db.Tags.ToArray();
-    //   Item[] items = _db.Items.ToArray();
-    //   Dictionary<string, object[]> model = new Dictionary<string, object[]>();
-    //   model.Add("tags", tags);
-    //   model.Add("items", items);
-    //   return View(model);
-    // }
+    [HttpGet("/")]
+    public ActionResult Index()
+    {
+      Flavor[] flavors = _db.Flavors.ToArray();
+      Treat[] treats = _db.Treats.ToArray();
+      Dictionary<string, object[]> model = new Dictionary<string, object[]>();
+      model.Add("flavors", flavors);
+      model.Add("treats", treats);
+      return View(model);
+    }
   }
 }
