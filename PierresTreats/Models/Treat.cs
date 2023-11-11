@@ -10,5 +10,7 @@ namespace PierresTreats.Models
     public string Description { get; set; }
 
     public List<TreatFlavor> JoinEntities { get; }
-  }
+        // public object User { get; internal set; }
+        public ApplicationUser User { get; set; }
+    }
 }

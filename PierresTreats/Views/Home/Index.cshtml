@@ -6,34 +6,42 @@
 
 <h1>Welcome to Pierre's Sweet and Savory Treats!</h1>
 
-<hr>
+<hr />
 
 <h4>Flavors</h4>
 @if (Model["flavors"].Length == 0)
 {
   <p>No flavors have been added yet!</p>
-}
+} 
 <ul>
   @foreach (Flavor flavor in Model["flavors"])
   {
-    <li>@Html.ActionLink(@flavor.Title, "Details", "Flavors", new { id = @flavor.FlavorId })</li>
+    <li>@Html.ActionLink(@flavor.Title, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
   }
 </ul>
 
-<h4>Treats</h4>
-@if (Model["treats"].Length == 0)
+@if (User.Identity.IsAuthenticated)
 {
-  <p>No treats have been added yet!</p>
-}
-<ul>
-  @foreach (Treat treat in Model["treats"])
+  <h4>Recipes for @User.Identity.Name</h4>
+  @if (Model["treats"].Length == 0)
   {
-    <li>@Html.ActionLink(@treat.Description, "Details", "Treats", new { id = @treat.TreatId })</li>
-  }
-</ul>
+    <p>No treats have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Treat treat in Model["treats"])
+    {
+      <li>@Html.ActionLink(@treat.Description, "Details", "Treats", new { id = @treat.TreatId})</li>
+    }
+  </ul>
+}
+else
+{
+  <h4>Treats</h4>
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your treats.</p>
+}
 
-<hr>
+<hr />
 
-<p>@Html.ActionLink("Manage treats", "Index", "Treats")</p>
+<p>@Html.ActionLink("Manage treats", "Index", "Treats")</p> 
 <p>@Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
 <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
